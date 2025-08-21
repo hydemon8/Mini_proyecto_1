@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comparación de resultados &#8212; Mini Proyecto 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Comparaciones';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="PySpark" href="Pyspark.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Logo-Uninorte.png" class="logo__image only-light" alt="Mini Proyecto 1 - Home"/>
+    <script>document.write(`<img src="_static/Logo-Uninorte.png" class="logo__image only-dark" alt="Mini Proyecto 1 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    <div style="text-align: center;">Mini Proyecto 1</div>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="eda.html">Librerías</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Scikit_learn.html"><strong>Scikit-learn</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pyspark.html"><strong>PySpark</strong></a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Comparación de resultados</strong></a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FComparaciones.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Comparaciones.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparación de resultados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Comparación de resultados</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-cual-metrica-nos-vamos-a-guiar"><em>¿Por cuál métrica nos vamos a guíar?</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><em>Métricas</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-comparativos"><em>Gráficos comparativos</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><em>Matriz de confusión</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curva-roc-auc"><em>Curva ROC AUC</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempos"><em>Tiempos</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexiones"><strong>Reflexiones</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="comparacion-de-resultados">
+<h1><strong>Comparación de resultados</strong><a class="headerlink" href="#comparacion-de-resultados" title="Link to this heading">#</a></h1>
+<section id="por-cual-metrica-nos-vamos-a-guiar">
+<h2><em>¿Por cuál métrica nos vamos a guíar?</em><a class="headerlink" href="#por-cual-metrica-nos-vamos-a-guiar" title="Link to this heading">#</a></h2>
+<p>En este proyecto, la <strong>métrica principal</strong> seleccionada para evaluar el modelo es <strong>Recall</strong>, pues en el contexto de la <strong>predicción de riesgo crediticio</strong>, resulta más crítico <strong>identificar correctamente los préstamos que podrían caer en <em>default</em></strong> que maximizar la exactitud global del modelo. Clasificar incorrectamente un préstamo riesgoso como <strong>“pagado”</strong> (<em>falso negativo</em>) podría generar <strong>pérdidas económicas significativas</strong>, mientras que clasificar erróneamente un préstamo sano como riesgoso (<em>falso positivo</em>) tiene un impacto menor.</p>
+<p>Por esta razón, el <strong>Recall</strong> es la métrica más adecuada, ya que permite <strong>maximizar la detección de préstamos en riesgo</strong>.</p>
+<p>Como <strong>métrica complementaria</strong>, se utilizará el <strong>F1-score</strong>, que equilibra el compromiso entre <strong>precision</strong> y <strong>recall</strong>. Esto es especialmente importante debido al <strong>desbalance en la variable objetivo</strong>, ya que métricas como la <strong>accuracy</strong> o la <strong>precision</strong> por sí solas pueden ser engañosas: un modelo que predijera siempre <strong>“pagado”</strong> alcanzaría una <strong>alta exactitud</strong>, pero sería incapaz de <strong>identificar la mayoría de los préstamos riesgosos</strong>.</p>
+</section>
+<section id="metricas">
+<h2><em>Métricas</em><a class="headerlink" href="#metricas" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrica</p></th>
+<th class="head"><p>Scikit-learn (test)</p></th>
+<th class="head"><p>PySpark (test)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Accuracy</p></td>
+<td><p>0.7236</p></td>
+<td><p>0.6437</p></td>
+</tr>
+<tr class="row-odd"><td><p>Precision</p></td>
+<td><p>0.3457</p></td>
+<td><p>0.3162</p></td>
+</tr>
+<tr class="row-even"><td><p>Recall</p></td>
+<td><p>0.4310</p></td>
+<td><p>0.6796</p></td>
+</tr>
+<tr class="row-odd"><td><p>F1-score</p></td>
+<td><p>0.3837</p></td>
+<td><p>0.6790</p></td>
+</tr>
+<tr class="row-even"><td><p>ROC AUC</p></td>
+<td><p>0.6840</p></td>
+<td><p>0.7081</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tiempo de entrenamiento (s)</p></td>
+<td><p>203.84</p></td>
+<td><p>85.94</p></td>
+</tr>
+<tr class="row-even"><td><p>Tiempo de predicción (s)</p></td>
+<td><p>0.21</p></td>
+<td><p>0.02</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El mejor modelo es el <strong>MLP implementado en PySpark</strong>. Este modelo presentó el mejor desempeño en términos de <strong>Recall</strong>, la métrica principal definida para este proyecto. Además, el modelo también mantiene un <strong>F1-score competitivo</strong>, lo que demuestra un buen balance entre <strong>precision</strong> y <strong>recall</strong>, mitigando el impacto del desbalance en la variable objetivo. En comparación, el modelo implementado en <strong>Scikit-learn</strong> obtiene un desempeño inferior en la detección de préstamos riesgosos, por lo que no resulta tan adecuado para los objetivos de este proyecto.</p>
+</section>
+<section id="graficos-comparativos">
+<h2><em>Gráficos comparativos</em><a class="headerlink" href="#graficos-comparativos" title="Link to this heading">#</a></h2>
+<section id="matriz-de-confusion">
+<h3><em>Matriz de confusión</em><a class="headerlink" href="#matriz-de-confusion" title="Link to this heading">#</a></h3>
+<p><img alt="Matrices de confusión" src="matrices.png" /></p>
+<p>El modelo de PySpark demuestra una capacidad superior para detectar préstamos en default, lo cual es la prioridad del negocio. En la matriz de confusión de PySpark, el modelo identifica 54,512 verdaderos positivos, mientras que el modelo de scikit-learn solo detecta 23,152. A pesar de que el modelo de PySpark también tiene un mayor número de falsos positivos, su capacidad para capturar más del doble de los casos de impago reales lo convierte en la mejor opción.</p>
+</section>
+<section id="curva-roc-auc">
+<h3><em>Curva ROC AUC</em><a class="headerlink" href="#curva-roc-auc" title="Link to this heading">#</a></h3>
+<p><img alt="Curvas ROC" src="roc_curve.png" /></p>
+<p>Las curvas ROC comparadas muestran que el modelo de PySpark supera al de scikit-learn en la clasificación de préstamos en default y pagados, alcanzando un ROC AUC de 0.7169, lo que refleja una mejor capacidad de discriminación y un equilibrio superior entre la tasa de verdaderos positivos y falsos positivos. En contraste, el modelo de scikit-learn, con un ROC AUC de 0.6840, presenta un rendimiento aceptable pero más limitado, situándose más cerca de la línea de aleatoriedad. En conjunto, la gráfica confirma que el modelo de PySpark es la mejor opción para predecir impagos.</p>
+</section>
+<section id="tiempos">
+<h3><em>Tiempos</em><a class="headerlink" href="#tiempos" title="Link to this heading">#</a></h3>
+<p><img alt="Tiempos" src="tiempos.png" /></p>
+<p>La gráfica de barras es contundente y revela la superioridad del modelo de PySpark en términos de eficiencia. El modelo de scikit-learn tarda 203.84 segundos en entrenar, mientras que el modelo de PySpark lo hace en solo 85.94 segundos. Además, el tiempo de predicción del modelo de PySpark es de tan solo 0.02 segundos, lo que lo hace ideal para aplicaciones en tiempo real.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reflexiones">
+<h1><strong>Reflexiones</strong><a class="headerlink" href="#reflexiones" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>¿Qué entorno fue más rápido?</strong><br />
+El entorno de PySpark fue significativamente más rápido que el de scikit-learn. Como se observa en la gráfica, el entrenamiento del modelo en PySpark tomó 85.94 segundos, mientras que en scikit-learn tardó 203.84 segundos. La diferencia en el tiempo de predicción es aún más notable: PySpark completó la tarea en 0.02 segundos, en comparación con los 0.21 segundos de scikit-learn. Esta superioridad en la eficiencia se debe a la naturaleza distribuida de PySpark, que procesa los datos en paralelo.</p></li>
+<li><p><strong>¿Cuál más preciso?</strong><br />
+El modelo de PySpark demostró ser más preciso para el objetivo de negocio. Su Recall fue drásticamente superior (0.6796 vs 0.4310), lo que indica una mejor capacidad para detectar impagos. El F1-score de PySpark también fue significativamente más alto (0.6790 vs 0.3837), confirmando un mejor equilibrio entre la precisión y la capacidad de detección.</p></li>
+<li><p><strong>¿Cuándo es útil PySpark?</strong><br />
+<strong>PySpark</strong> es más útil cuando se trabaja con grandes volúmenes de datos o cuando se requiere procesamiento distribuido. Su arquitectura permite manejar datasets que no caben en memoria y ejecutar cálculos en paralelo, reduciendo tiempos en escenarios de Big Data.</p></li>
+<li><p><strong>¿Qué aporta LIME?</strong><br />
+LIME ayuda a interpretar el modelo, explicando cómo cada característica contribuye a una predicción individual. Esto es clave para entender decisiones del modelo, generar confianza y validar que no esté aprendiendo patrones sesgados o irrelevantes.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Pyspark.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>PySpark</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Comparación de resultados</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-cual-metrica-nos-vamos-a-guiar"><em>¿Por cuál métrica nos vamos a guíar?</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><em>Métricas</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-comparativos"><em>Gráficos comparativos</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><em>Matriz de confusión</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curva-roc-auc"><em>Curva ROC AUC</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempos"><em>Tiempos</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexiones"><strong>Reflexiones</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sara Michelle Guerra Rincón
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1101 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PySpark &#8212; Mini Proyecto 1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Pyspark';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Comparación de resultados" href="Comparaciones.html" />
+    <link rel="prev" title="Scikit-learn" href="Scikit_learn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Logo-Uninorte.png" class="logo__image only-light" alt="Mini Proyecto 1 - Home"/>
+    <script>document.write(`<img src="_static/Logo-Uninorte.png" class="logo__image only-dark" alt="Mini Proyecto 1 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    <div style="text-align: center;">Mini Proyecto 1</div>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="eda.html">Librerías</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Scikit_learn.html"><strong>Scikit-learn</strong></a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>PySpark</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Comparaciones.html"><strong>Comparación de resultados</strong></a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPyspark.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Pyspark.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PySpark</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>PySpark</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-de-transformacion-de-features"><em>Pipeline de Transformación de Features</em></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#division-del-dataset"><em>División del dataset</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling"><em>Oversampling</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado"><em>Modelado</em></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructType</span><span class="p">,</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">IntegerType</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml.feature</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIndexer</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">VectorAssembler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml.classification</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultilayerPerceptronClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.ml.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryClassificationEvaluator</span><span class="p">,</span> <span class="n">MulticlassClassificationEvaluator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span> <span class="k">as</span> <span class="n">sk_auc</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">precision_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="pyspark">
+<h1><strong>PySpark</strong><a class="headerlink" href="#pyspark" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Crear una SparkSession</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;MiApp&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.driver.memory&quot;</span><span class="p">,</span> <span class="s2">&quot;4g&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Leer el archivo</span>
+<span class="n">df_spark</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;data/df_final.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_spark</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 15368:=============&gt;                                        (3 + 9) / 12]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+----------+---------+----------+--------------+----------+-------------------+--------+------------------+-----+-----------+----------------+--------------+--------------------------+----------------+--------------+------------+----------------+-----------+--------------+------------------------+-----------+---------------------+--------------+--------+--------------------+---------------------+---------------------+---------+----------------+------------+------------------+------------------+--------------------+---------+-----------------+-------+
+|funded_amnt|      term|sub_grade|emp_length|home_ownership|annual_inc|verification_status| issue_d|           purpose|  dti|delinq_2yrs|earliest_cr_line|inq_last_6mths|collections_12_mths_ex_med|application_type|acc_now_delinq|tot_coll_amt|total_rev_hi_lim|avg_cur_bal|bc_open_to_buy|chargeoff_within_12_mths|delinq_amnt|mo_sin_rcnt_rev_tl_op|mo_sin_rcnt_tl|mort_acc|mths_since_recent_bc|mths_since_recent_inq|num_accts_ever_120_pd|num_il_tl|num_tl_120dpd_2m|num_tl_30dpd|num_tl_90g_dpd_24m|num_tl_op_past_12m|pub_rec_bankruptcies|tax_liens|total_bal_ex_mort|default|
++-----------+----------+---------+----------+--------------+----------+-------------------+--------+------------------+-----+-----------+----------------+--------------+--------------------------+----------------+--------------+------------+----------------+-----------+--------------+------------------------+-----------+---------------------+--------------+--------+--------------------+---------------------+---------------------+---------+----------------+------------+------------------+------------------+--------------------+---------+-----------------+-------+
+|     3600.0| 36 months|       C4|      10.0|      MORTGAGE|   55000.0|       Not Verified|Dec-2015|debt_consolidation| 5.91|        0.0|        Aug-2003|           1.0|                       0.0|      Individual|           0.0|       722.0|          9300.0|    20701.0|        1506.0|                     0.0|        0.0|                  3.0|           3.0|     1.0|                 4.0|                  4.0|                  2.0|      3.0|             0.0|         0.0|               0.0|               3.0|                 0.0|      0.0|           7746.0|    0.0|
+|    24700.0| 36 months|       C1|      10.0|      MORTGAGE|   65000.0|       Not Verified|Dec-2015|    small_business|16.06|        1.0|        Dec-1999|           4.0|                       0.0|      Individual|           0.0|         0.0|        111800.0|     9733.0|       57830.0|                     0.0|        0.0|                  2.0|           2.0|     4.0|                 2.0|                  0.0|                  0.0|      6.0|             0.0|         0.0|               0.0|               2.0|                 0.0|      0.0|          39475.0|    0.0|
+|    20000.0| 60 months|       B4|      10.0|      MORTGAGE|   63000.0|       Not Verified|Dec-2015|  home_improvement|10.78|        0.0|        Aug-2000|           0.0|                       0.0|       Joint App|           0.0|         0.0|         14000.0|    31617.0|        2737.0|                     0.0|        0.0|                 14.0|          14.0|     5.0|               101.0|                 10.0|                  0.0|      6.0|             0.0|         0.0|               0.0|               0.0|                 0.0|      0.0|          18696.0|    0.0|
+|    10400.0| 60 months|       F1|       3.0|      MORTGAGE|  104433.0|    Source Verified|Dec-2015|    major_purchase|25.37|        1.0|        Jun-1998|           3.0|                       0.0|      Individual|           0.0|         0.0|         34000.0|    27644.0|        4567.0|                     0.0|        0.0|                  4.0|           4.0|     6.0|                 4.0|                  1.0|                  0.0|     10.0|             0.0|         0.0|               0.0|               4.0|                 0.0|      0.0|          95768.0|    0.0|
+|    11950.0| 36 months|       C3|       4.0|          RENT|   34000.0|    Source Verified|Dec-2015|debt_consolidation| 10.2|        0.0|        Oct-1987|           0.0|                       0.0|      Individual|           0.0|         0.0|         12900.0|     2560.0|         844.0|                     0.0|        0.0|                 32.0|          32.0|     0.0|                36.0|                  5.0|                  0.0|      2.0|             0.0|         0.0|               0.0|               0.0|                 0.0|      0.0|          12798.0|    0.0|
++-----------+----------+---------+----------+--------------+----------+-------------------+--------+------------------+-----+-----------+----------------+--------------+--------------------------+----------------+--------------+------------+----------------+-----------+--------------+------------------------+-----------+---------------------+--------------+--------+--------------------+---------------------+---------------------+---------+----------------+------------+------------------+------------------+--------------------+---------+-----------------+-------+
+only showing top 5 rows
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir las columnas</span>
+<span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;term&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sub_grade&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;emp_length&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;home_ownership&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;verification_status&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;purpose&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;application_type&#39;</span>
+<span class="p">]</span>
+
+<span class="n">numerical_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;funded_amnt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dti&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;delinq_2yrs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;inq_last_6mths&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;collections_12_mths_ex_med&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;acc_now_delinq&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tot_coll_amt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;total_rev_hi_lim&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;avg_cur_bal&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bc_open_to_buy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chargeoff_within_12_mths&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;delinq_amnt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mo_sin_rcnt_rev_tl_op&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mo_sin_rcnt_tl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mort_acc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mths_since_recent_bc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mths_since_recent_inq&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_accts_ever_120_pd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_il_tl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_tl_120dpd_2m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_tl_30dpd&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_tl_90g_dpd_24m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_tl_op_past_12m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pub_rec_bankruptcies&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tax_liens&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;total_bal_ex_mort&#39;</span>
+<span class="p">]</span>
+
+<span class="n">label_col</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pipeline-de-transformacion-de-features">
+<h2><em>Pipeline de Transformación de Features</em><a class="headerlink" href="#pipeline-de-transformacion-de-features" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Pipeline de transformación</span>
+<span class="n">indexers</span> <span class="o">=</span> <span class="p">[</span><span class="n">StringIndexer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">_index&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">categorical_cols</span><span class="p">]</span>
+<span class="n">encoders</span> <span class="o">=</span> <span class="p">[</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">_index&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">_encoded&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">categorical_cols</span><span class="p">]</span>
+
+<span class="c1"># Ensamblar numéricas</span>
+<span class="n">assembler_num</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="n">numerical_cols</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;num_features&quot;</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;num_features&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;scaled_features&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ensamblar todas las features</span>
+<span class="n">assembler_all</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span>
+    <span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;scaled_features&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">_encoded&quot;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">categorical_cols</span><span class="p">],</span>
+    <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span>
+<span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="n">indexers</span> <span class="o">+</span> <span class="n">encoders</span> <span class="o">+</span> <span class="p">[</span><span class="n">assembler_num</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">assembler_all</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Transformar los datos</span>
+<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_spark</span><span class="p">)</span>
+<span class="n">df_transformed</span> <span class="o">=</span> <span class="n">pipeline_model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_spark</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="division-del-dataset">
+<h1><em>División del dataset</em><a class="headerlink" href="#division-del-dataset" title="Link to this heading">#</a></h1>
+<p>Aquí usamos sampleBy para realizar una división estratificada de los datos, asegurando que cada clase de la variable objetivo esté representada de forma proporcional tanto en el conjunto de entrenamiento como en el de prueba.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># 5. División estratificada train/test</span>
+
+<span class="c1"># Obtener las clases únicas</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">df_transformed</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="c1"># Definir fracción 0.7 para cada clase</span>
+<span class="n">fractions</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="mf">0.7</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
+
+<span class="c1"># Sample estratificado</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">df_transformed</span><span class="o">.</span><span class="n">sampleBy</span><span class="p">(</span><span class="n">label_col</span><span class="p">,</span> <span class="n">fractions</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">df_transformed</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train size:&quot;</span><span class="p">,</span> <span class="n">train_df</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s2">&quot;Test size:&quot;</span><span class="p">,</span> <span class="n">test_df</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 15425:==================================================&gt;  (18 + 1) / 19]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train size: 942296 Test size: 403014
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_distribution</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">label_col</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;proportion&quot;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distribución en </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Revisar</span>
+<span class="n">check_distribution</span><span class="p">(</span><span class="n">df_transformed</span><span class="p">,</span> <span class="n">label_col</span><span class="p">,</span> <span class="s2">&quot;original&quot;</span><span class="p">)</span>
+<span class="n">check_distribution</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">label_col</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">check_distribution</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">label_col</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución en original:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+-------+-------------------+
+|default|  count|         proportion|
++-------+-------+-------------------+
+|    0.0|1076751| 0.8003738915194267|
+|    1.0| 268559|0.19962610848057324|
++-------+-------+-------------------+
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución en train:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+------+-------------------+
+|default| count|         proportion|
++-------+------+-------------------+
+|    0.0|753949| 0.8001190708652058|
+|    1.0|188347|0.19988092913479416|
++-------+------+-------------------+
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribución en test:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 15465:=========================================&gt;           (15 + 4) / 19]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+------+-------------------+
+|default| count|         proportion|
++-------+------+-------------------+
+|    0.0|322802| 0.8009696933605284|
+|    1.0| 80212|0.19903030663947158|
++-------+------+-------------------+
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+<section id="oversampling">
+<h2><em>Oversampling</em><a class="headerlink" href="#oversampling" title="Link to this heading">#</a></h2>
+<p>Para abordar el desbalance de clases y evitar que el modelo aprenda patrones principalmente de la clase mayoritaria, usamos oversampling. Es decir, duplicamos la clase minoritaria para que tenga un número de registros similar a la clase mayoritaria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar cuántos registros hay en cada clase</span>
+<span class="n">clase_counts</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">clase_mayoritaria</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">clase_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span>
+<span class="n">clase_menoritaria</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">clase_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span>
+<span class="n">mayor_count</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">clase_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
+<span class="n">menor_count</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">clase_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Antes del balanceo -&gt; Mayoritaria: </span><span class="si">{</span><span class="n">mayor_count</span><span class="si">}</span><span class="s2"> | Minoritaria: </span><span class="si">{</span><span class="n">menor_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Separar datasets</span>
+<span class="n">df_mayoritaria</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span> <span class="o">==</span> <span class="n">clase_mayoritaria</span><span class="p">)</span>
+<span class="n">df_menoritaria</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span> <span class="o">==</span> <span class="n">clase_menoritaria</span><span class="p">)</span>
+
+<span class="c1"># Calcular factor de oversampling</span>
+<span class="n">factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mayor_count</span> <span class="o">/</span> <span class="n">menor_count</span><span class="p">)</span>
+
+<span class="c1"># Repetir la clase minoritaria</span>
+<span class="n">df_menor_oversampled</span> <span class="o">=</span> <span class="n">df_menoritaria</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">factor</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">df_menor_oversampled</span> <span class="o">=</span> <span class="n">df_menor_oversampled</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">df_menoritaria</span><span class="p">)</span>
+
+<span class="c1"># Dataset balanceado final</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">df_mayoritaria</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">df_menor_oversampled</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Después del balanceo:&quot;</span><span class="p">)</span>
+<span class="n">train_df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="n">label_col</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Antes del balanceo -&gt; Mayoritaria: 753949 | Minoritaria: 188347
+Después del balanceo:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 15478:=========================================&gt;          (48 + 12) / 60]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+------+
+|default| count|
++-------+------+
+|    0.0|753949|
+|    1.0|753388|
++-------+------+
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelado">
+<h2><em>Modelado</em><a class="headerlink" href="#modelado" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_transformed</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">layers_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">step_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+<span class="n">max_iters</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+
+<span class="n">binary_eval</span> <span class="o">=</span> <span class="n">BinaryClassificationEvaluator</span><span class="p">(</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;areaUnderROC&quot;</span><span class="p">)</span>
+<span class="n">accuracy_eval</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">(</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+<span class="n">f1_eval</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">(</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">)</span>
+<span class="n">recall_eval</span> <span class="o">=</span> <span class="n">MulticlassClassificationEvaluator</span><span class="p">(</span><span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">predictionCol</span><span class="o">=</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span>
+                                                <span class="n">metricName</span><span class="o">=</span><span class="s2">&quot;recallByLabel&quot;</span><span class="p">,</span> <span class="n">metricLabel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># ========================================</span>
+<span class="c1"># 3. Entrenamiento y evaluación de modelos</span>
+<span class="c1"># ========================================</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">layers</span> <span class="ow">in</span> <span class="n">layers_list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">step_sizes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">iters</span> <span class="ow">in</span> <span class="n">max_iters</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Entrenando modelo con layers=</span><span class="si">{</span><span class="n">layers</span><span class="si">}</span><span class="s2">, stepSize=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">, maxIter=</span><span class="si">{</span><span class="n">iters</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Instanciar modelo MLP</span>
+            <span class="n">mlp</span> <span class="o">=</span> <span class="n">MultilayerPerceptronClassifier</span><span class="p">(</span>
+                <span class="n">featuresCol</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span>
+                <span class="n">labelCol</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span>
+                <span class="n">blockSize</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+                <span class="n">maxIter</span><span class="o">=</span><span class="n">iters</span><span class="p">,</span>
+                <span class="n">stepSize</span><span class="o">=</span><span class="n">step</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Tiempo de entrenamiento</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+            <span class="n">train_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+            <span class="c1"># Tiempo de predicción</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+            <span class="n">pred_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+            <span class="c1"># Métricas</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="n">binary_eval</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+            <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_eval</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+            <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_eval</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+            <span class="n">recall</span> <span class="o">=</span> <span class="n">recall_eval</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="n">layers</span><span class="p">,</span>
+                <span class="s2">&quot;stepSize&quot;</span><span class="p">:</span> <span class="n">step</span><span class="p">,</span>
+                <span class="s2">&quot;maxIter&quot;</span><span class="p">:</span> <span class="n">iters</span><span class="p">,</span>
+                <span class="s2">&quot;AUC&quot;</span><span class="p">:</span> <span class="n">auc</span><span class="p">,</span>
+                <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">acc</span><span class="p">,</span>
+                <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
+                <span class="s2">&quot;Recall&quot;</span><span class="p">:</span> <span class="n">recall</span><span class="p">,</span>
+                <span class="s2">&quot;train_time&quot;</span><span class="p">:</span> <span class="n">train_time</span><span class="p">,</span>
+                <span class="s2">&quot;pred_time&quot;</span><span class="p">:</span> <span class="n">pred_time</span><span class="p">,</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+                <span class="s2">&quot;predictions&quot;</span><span class="p">:</span> <span class="n">predictions</span>
+            <span class="p">})</span>
+
+<span class="c1"># ========================================</span>
+<span class="c1"># 4. Selección del mejor modelo por Recall</span>
+<span class="c1"># ========================================</span>
+<span class="n">best_result</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;Recall&quot;</span><span class="p">])</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">best_result</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+<span class="n">best_preds</span> <span class="o">=</span> <span class="n">best_result</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">===== Mejor modelo (según Recall) =====&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Layers: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, StepSize: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;stepSize&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, MaxIter: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;maxIter&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;AUC&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | Accuracy: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;F1: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;F1&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | Recall: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;Recall&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train time: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;train_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s | Pred time: </span><span class="si">{</span><span class="n">best_result</span><span class="p">[</span><span class="s1">&#39;pred_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="c1"># ========================================</span>
+<span class="c1"># 5. Gráficos del mejor modelo</span>
+<span class="c1"># ========================================</span>
+<span class="c1"># --- ROC Curve ---</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">best_preds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()]</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;probability&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">best_preds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;probability&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()]</span>
+
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">sk_auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;ROC curve (area = </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Curve (Mejor modelo por Recall)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Matriz de confusión ---</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;prediction&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">best_preds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()]</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matriz de confusión (Mejor modelo por Recall)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.1, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.1, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.01, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.01, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.001, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 10, 2], stepSize=0.001, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.1, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.1, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.01, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.01, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.001, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 12056:&gt;                                                    (0 + 12) / 19]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12301.198s][warning][gc,alloc] Executor task launch worker for task 10.0 in stage 12056.0 (TID 183476): Retried waiting for GCLocker too often allocating 1048576 words
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25/08/20 20:31:32 WARN TaskMemoryManager: Failed to allocate a page (8388592 bytes), try again.
+                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 50, 2], stepSize=0.001, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.1, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.1, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.01, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.01, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.001, maxIter=100
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando modelo con layers=[93, 100, 2], stepSize=0.001, maxIter=200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===== Mejor modelo (según Recall) =====
+Layers: [93, 50, 2], StepSize: 0.001, MaxIter: 100
+AUC: 0.7078 | Accuracy: 0.6416 | F1: 0.6772 | Recall: 0.6834
+Train time: 83.47s | Pred time: 0.01s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<img alt="_images/d8afc593f1980c6888d219e8cd4d37d0396c20455defeede93fb40fe18993199.png" src="_images/d8afc593f1980c6888d219e8cd4d37d0396c20455defeede93fb40fe18993199.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+<img alt="_images/596e2e196f667cdfefe485865ffcbad01ae7f0f530f6ae90c277ffb715249f4d.png" src="_images/596e2e196f667cdfefe485865ffcbad01ae7f0f530f6ae90c277ffb715249f4d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Scikit_learn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Scikit-learn</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Comparaciones.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Comparación de resultados</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>PySpark</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-de-transformacion-de-features"><em>Pipeline de Transformación de Features</em></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#division-del-dataset"><em>División del dataset</em></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling"><em>Oversampling</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelado"><em>Modelado</em></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sara Michelle Guerra Rincón
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
