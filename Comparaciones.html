@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -464,17 +464,17 @@ document.write(`
 <h2><em>Gráficos comparativos</em><a class="headerlink" href="#graficos-comparativos" title="Link to this heading">#</a></h2>
 <section id="matriz-de-confusion">
 <h3><em>Matriz de confusión</em><a class="headerlink" href="#matriz-de-confusion" title="Link to this heading">#</a></h3>
-<p><img alt="Matrices de confusión" src="matrices.png" /></p>
+<p><img alt="Matrices de confusión" src="_images/matrices.png" /></p>
 <p>El modelo de PySpark demuestra una capacidad superior para detectar préstamos en default, lo cual es la prioridad del negocio. En la matriz de confusión de PySpark, el modelo identifica 54,512 verdaderos positivos, mientras que el modelo de scikit-learn solo detecta 23,152. A pesar de que el modelo de PySpark también tiene un mayor número de falsos positivos, su capacidad para capturar más del doble de los casos de impago reales lo convierte en la mejor opción.</p>
 </section>
 <section id="curva-roc-auc">
 <h3><em>Curva ROC AUC</em><a class="headerlink" href="#curva-roc-auc" title="Link to this heading">#</a></h3>
-<p><img alt="Curvas ROC" src="roc_curve.png" /></p>
+<p><img alt="Curvas ROC" src="_images/roc_curve.png" /></p>
 <p>Las curvas ROC comparadas muestran que el modelo de PySpark supera al de scikit-learn en la clasificación de préstamos en default y pagados, alcanzando un ROC AUC de 0.7169, lo que refleja una mejor capacidad de discriminación y un equilibrio superior entre la tasa de verdaderos positivos y falsos positivos. En contraste, el modelo de scikit-learn, con un ROC AUC de 0.6840, presenta un rendimiento aceptable pero más limitado, situándose más cerca de la línea de aleatoriedad. En conjunto, la gráfica confirma que el modelo de PySpark es la mejor opción para predecir impagos.</p>
 </section>
 <section id="tiempos">
 <h3><em>Tiempos</em><a class="headerlink" href="#tiempos" title="Link to this heading">#</a></h3>
-<p><img alt="Tiempos" src="tiempos.png" /></p>
+<p><img alt="Tiempos" src="_images/tiempos.png" /></p>
 <p>La gráfica de barras es contundente y revela la superioridad del modelo de PySpark en términos de eficiencia. El modelo de scikit-learn tarda 203.84 segundos en entrenar, mientras que el modelo de PySpark lo hace en solo 85.94 segundos. Además, el tiempo de predicción del modelo de PySpark es de tan solo 0.02 segundos, lo que lo hace ideal para aplicaciones en tiempo real.</p>
 </section>
 </section>
