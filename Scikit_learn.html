@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="PySpark" href="Pyspark.html" />
-    <link rel="prev" title="Librerías" href="eda.html" />
+    <link rel="prev" title="Análisis exploratorio de datos" href="eda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +180,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="eda.html">Librerías</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html"><strong>Análisis exploratorio de datos</strong></a></li>
+
 
 
 
@@ -719,10 +720,9 @@ Tipo de dato de la columna &#39;sub_grade&#39;: int64
     <span class="p">(</span><span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;issue_d&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">-</span> <span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;earliest_cr_line&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="c1"># 3. Eliminar las columnas de fecha originales</span>
 <span class="n">df_final</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;earliest_cr_line&#39;</span><span class="p">,</span> <span class="s1">&#39;issue_d&#39;</span><span class="p">])</span>
 
-<span class="c1"># 4. Verificar el resultado</span>
+<span class="c1"># 4. Verificando</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variable &#39;historial_crediticio_meses&#39; creada:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;historial_crediticio_meses&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tipo de dato de la nueva columna:&quot;</span><span class="p">,</span> <span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;historial_crediticio_meses&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
@@ -752,22 +752,20 @@ Tipo de dato de la nueva columna: int32
 <span class="n">X</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_final</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
 
-<span class="c1"># 2. Identificar las columnas numéricas y categóricas para el preprocesamiento automático</span>
 <span class="n">cols_to_exclude</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;term&#39;</span><span class="p">,</span> <span class="s1">&#39;sub_grade&#39;</span><span class="p">,</span> <span class="s1">&#39;historial_crediticio_meses&#39;</span><span class="p">]</span>
 
 <span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cols_to_exclude</span><span class="p">]</span>
 <span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cols_to_exclude</span><span class="p">]</span>
 
-<span class="c1"># 3. Crear un ColumnTransformer para aplicar las transformaciones</span>
+<span class="c1"># 2. Crear un ColumnTransformer para aplicar las transformaciones</span>
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
     <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
         <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_features</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="n">categorical_features</span><span class="p">)</span>
     <span class="p">],</span>
-    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span>  <span class="c1"># Mantiene las columnas excluidas</span>
+    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span>  
 <span class="p">)</span>
 
-<span class="c1"># 4. Aplicar las transformaciones</span>
 <span class="n">X_processed</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Las variables han sido escaladas y codificadas.&quot;</span><span class="p">)</span>
@@ -882,10 +880,9 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir un umbral de importancia. Por ejemplo, 0.01</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir un umbral de importancia. </span>
 <span class="n">umbral_importancia</span> <span class="o">=</span> <span class="mf">0.01</span>
 
-<span class="c1"># Seleccionar las variables que superan el umbral</span>
 <span class="n">variables_relevantes_seleccionadas</span> <span class="o">=</span> <span class="n">feature_importances</span><span class="p">[</span>
     <span class="n">feature_importances</span> <span class="o">&gt;</span> <span class="n">umbral_importancia</span>
 <span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -933,7 +930,7 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Obtener los nombres de las columnas procesadas</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 
-<span class="c1"># 2. Convertir X_processed a DataFrame</span>
+<span class="c1"># 2. Convertir a DataFrame</span>
 <span class="n">X_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_processed</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
 
 <span class="c1"># 3. Filtrar solo las variables importantes según tu umbral</span>
@@ -943,7 +940,7 @@ dtype: float64
 <span class="c1"># 4. Agregar la variable objetivo</span>
 <span class="n">X_selected</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Alinea índices</span>
 
-<span class="c1"># 5. Guardar el DataFrame final</span>
+<span class="c1"># 5. Guardar el DataFrame </span>
 <span class="n">df_final_selected</span> <span class="o">=</span> <span class="n">X_selected</span>
 
 <span class="c1"># Revisar</span>
@@ -1064,9 +1061,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Proporción en el conjunto de prueba (original):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-<span class="c1"># -------------------------------------------------------------</span>
-<span class="c1"># Agrega esta parte para verificar las proporciones de la MUESTRA</span>
-<span class="c1"># -------------------------------------------------------------</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Verificación de la MUESTRA para Grid Search ---&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensiones de la muestra (X_sample, y_sample): </span><span class="si">{</span><span class="n">X_sample</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1504,7 +1498,7 @@ ROC AUC: 0.6840
 <span class="n">misclassified_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_pred_test</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Se encontraron </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">misclassified_idx</span><span class="p">)</span><span class="si">}</span><span class="s2"> observaciones mal clasificadas.&quot;</span><span class="p">)</span>
 
-<span class="c1"># Elegir la primera mal clasificada (puedes cambiar el índice)</span>
+<span class="c1"># Elegir la primera mal clasificada</span>
 <span class="n">i</span> <span class="o">=</span> <span class="n">misclassified_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Índice seleccionado:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Etiqueta real:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -1518,7 +1512,6 @@ ROC AUC: 0.6840
     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span>
 <span class="p">)</span>
 
-<span class="c1"># --- 4. Explicar la predicción de esa instancia ---</span>
 <span class="n">exp</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">explain_instance</span><span class="p">(</span>
     <span class="n">data_row</span><span class="o">=</span><span class="n">X_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
     <span class="n">predict_fn</span><span class="o">=</span><span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span>
@@ -1542,12 +1535,12 @@ Predicción modelo: 1.0
 <span class="n">features</span><span class="p">,</span> <span class="n">contributions</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">exp_list</span><span class="p">)</span>
 <span class="n">contributions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">contributions</span><span class="p">)</span>
 
-<span class="c1"># --- 2. Asignar colores por clase usando Purples ---</span>
+
 <span class="n">purple_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 5 tonos de morado</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">purple_palette</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">purple_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">contributions</span><span class="p">]</span>
 <span class="c1"># purple_palette[4] = oscuro (Default), purple_palette[1] = claro (Fully Paid)</span>
 
-<span class="c1"># --- 3. Graficar ---</span>
+<span class="c1"># ---2. Graficar ---</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">contributions</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Contribución al Default&#39;</span><span class="p">)</span>
@@ -1610,7 +1603,7 @@ Predicción modelo: 1.0
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Librerías</p>
+        <p class="prev-next-title"><strong>Análisis exploratorio de datos</strong></p>
       </div>
     </a>
     <a class="right-next"
